@@ -387,5 +387,5 @@ Temporary Items
 
 =======
 # Local
-dokcer-compose.yml
 .env
+config.json

@@ -18,6 +18,7 @@
     "@nestjs/core": "^4.5.10",
     "@nestjs/microservices": "^4.5.8",
     "@nestjs/mongoose": "^3.0.1",
+    "@nestjs/swagger": "^1.2.2",
     "@nestjs/testing": "^4.5.5",
     "@nestjs/websockets": "^4.5.8",
     "mongoose": "^5.0.14",
