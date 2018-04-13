@@ -1,8 +1,6 @@
 # todo-nestjs
 
-To do list - Simple API REST powered by NestJS
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+To do list - Simple API REST powered by [NestJS](https://github.com/nestjs/nest)
 
 ## Installation
 
