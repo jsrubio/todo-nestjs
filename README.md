@@ -5,7 +5,7 @@ To do list - Simple API REST powered by [NestJS](https://github.com/nestjs/nest)
 ## Installation
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 ## Running the app
@@ -18,7 +18,7 @@ $ yarn run start
 $ yarn run start:dev
 
 # production mode
-yarn run start:prod
+$ yarn run start:prod
 ```
 
 ## Test
