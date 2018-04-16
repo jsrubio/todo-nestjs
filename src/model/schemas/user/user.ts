@@ -1,8 +1,7 @@
-import { Document, Schema } from 'mongoose';
+import { Document } from 'mongoose';
+import { List } from '../list/list';
 
-import { Item } from '../item/item';
-
-export interface List extends Document {
+export interface User extends Document {
   readonly username: string;
   readonly email: string;
   readonly password: string;

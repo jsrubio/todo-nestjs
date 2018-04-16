@@ -11,6 +11,9 @@ $ yarn install
 ## Running the app
 
 ```bash
+# create a copy of config.json
+$ cp config.json.example config.json
+
 # development
 $ yarn run start
 

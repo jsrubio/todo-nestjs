@@ -8,7 +8,7 @@ async function bootstrap() {
 
   const options = new DocumentBuilder()
     .setTitle('TO DO List')
-    .setDescription('To do list - Simple API REST powered by NestJS')
+    .setDescription('To do lists - Simple API REST powered by NestJS')
     .setVersion('1.0')
     .build();
 
