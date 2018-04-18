@@ -1,5 +1,7 @@
 FROM node:6.1
 
+RUN npm i -g yarn
+
 WORKDIR /app
 
 COPY . /app
