@@ -1,5 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ItemSchema } from 'model/schemas/item/item.schema';
+import { UserSchema } from 'model/schemas/user/user.schema';
+
 import { ListSchema } from '../model/schemas/list/list.schema';
 import { ListsController } from './lists.controller';
 import { ListsService } from './lists.service';
@@ -8,6 +11,7 @@ import { ListsService } from './lists.service';
   imports: [
     MongooseModule.forFeature([
       { name: 'List', schema: ListSchema },
+      { name: 'Item', schema: ItemSchema },
     ]),
   ],
   controllers: [

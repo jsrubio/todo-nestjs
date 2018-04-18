@@ -1,6 +1,7 @@
-import { Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { ItemsService } from './items.service';
+import { ItemDto } from './item.dto';
 
 @ApiUseTags('items')
 @Controller('items')
@@ -14,8 +15,8 @@ export class ItemsController {
   @ApiOperation({ title: 'Create item' })
   @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
   @ApiResponse({ status: 400, description: 'Invalid request.'})
-  async create() {
-    // TODO: Create CreateItemDTO
+  async create(@Body() item: ItemDto) {
+    return this.itemsService.create(item);
   }
 
   @Get(':id')
@@ -26,12 +27,12 @@ export class ItemsController {
     this.itemsService.get(id);
   }
 
-  @Put()
+  @Put(':id')
   @ApiOperation({ title: 'Update item' })
   @ApiResponse({ status: 200, description: 'The record has been successfully updated.'})
   @ApiResponse({ status: 404, description: 'The record was not found.'})
-  async update() {
-    // TODO: Create UpdateItemDTO
+  async update(@Param('id') id: string, @Body() item: ItemDto) {
+    return this.itemsService.update(id, item);
   }
 
   @Delete(':id')

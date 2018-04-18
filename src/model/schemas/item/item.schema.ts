@@ -1,8 +1,9 @@
-import { BaseSchema } from '../base.schema';
 import { Schema } from 'mongoose';
 
+import { BaseSchema } from '../base.schema';
+
 export const ItemSchema = new BaseSchema({
-  list: { type: Schema.Types.ObjectId, ref: 'List' },
+  list: Schema.Types.ObjectId,
   title: String,
   description: String,
   completed: Boolean,

@@ -1,9 +1,13 @@
-import { Component } from '@nestjs/common';
+import { Component, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { Item } from 'model/schemas/item/item';
+import { ItemSchema } from 'model/schemas/item/item.schema';
+import { UserSchema } from 'model/schemas/user/user.schema';
 import { Model } from 'mongoose';
 
 import { List } from '../model/schemas/list/list';
 import { ListSchema } from '../model/schemas/list/list.schema';
+import { User } from '../model/schemas/user/user';
 import { ListDto } from './list.dto';
 
 @Component()
@@ -11,6 +15,7 @@ export class ListsService {
 
   constructor(
     @InjectModel(ListSchema) private readonly listModel: Model<List>,
+    @InjectModel(ItemSchema) private readonly itemModel: Model<Item>,
   ) { }
 
   async create(list: ListDto): Promise<List> {
@@ -19,12 +24,12 @@ export class ListsService {
   }
 
   async get(id: string): Promise<List> {
-    return await this.listModel.findOne({ _id: id })
-      .populate({
-        path: 'items',
-        model: 'Item',
-      })
-      .exec();
+    const list = await this.listModel.findOne({ _id: id }).exec();
+    if (!list) {
+      throw new NotFoundException();
+    }
+    list.items = await this.itemModel.find({ list: list._id }).exec();
+    return list;
   }
 
   async update(id: string, list: ListDto): Promise<List> {

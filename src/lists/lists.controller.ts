@@ -28,7 +28,7 @@ export class ListsController {
     return this.listsService.get(id);
   }
 
-  @Put()
+  @Put(':id')
   @ApiOperation({ title: 'Update list' })
   @ApiResponse({ status: 200, description: 'The record has been successfully updated.'})
   @ApiResponse({ status: 404, description: 'The record was not found.'})

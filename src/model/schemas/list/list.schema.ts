@@ -4,9 +4,7 @@ import { BaseSchema } from '../base.schema';
 import { ItemSchema } from '../item/item.schema';
 
 export const ListSchema = new BaseSchema({
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
+  user: Schema.Types.ObjectId,
   title: String,
-  items: [{
-    type: Schema.Types.ObjectId, ref: 'List',
-  }],
+  items: [ItemSchema],
 });

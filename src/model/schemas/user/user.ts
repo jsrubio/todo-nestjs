@@ -1,10 +1,10 @@
 import { Document, Schema } from 'mongoose';
 
+import { List } from '../list/list';
+
 export interface User extends Document {
-  readonly username: string;
-  readonly email: string;
-  readonly password: string;
-  readonly lists: [{
-    type: Schema.Types.ObjectId, ref: 'List',
-  }];
+  username: string;
+  email: string;
+  password: string;
+  lists: List[];
 }

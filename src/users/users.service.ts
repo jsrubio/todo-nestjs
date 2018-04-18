@@ -1,4 +1,4 @@
-import { Component } from '@nestjs/common';
+import { Component, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { ListSchema } from 'model/schemas/list/list.schema';
 import { Model } from 'mongoose';
@@ -14,6 +14,7 @@ export class UsersService {
 
   constructor(
     @InjectModel(UserSchema) private readonly userModel: Model<User>,
+    @InjectModel(ListSchema) private readonly listModel: Model<List>,
   ) { }
 
   async create(user: UserDto): Promise<User> {
@@ -22,10 +23,12 @@ export class UsersService {
   }
 
   async get(id: string): Promise<User> {
-    const List = mongoose.model('List', ListSchema);
-    return await this.userModel.findOne({ _id: id })
-      .populate('lists')
-      .exec();
+    const user = await this.userModel.findOne({ _id: id }).exec();
+    if (!user) {
+      throw new NotFoundException();
+    }
+    user.lists = await this.listModel.find({ user: user._id }).exec();
+    return user;
   }
 
   async update(id: string, user: UserDto): Promise<User> {
