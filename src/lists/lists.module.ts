@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ItemSchema } from 'model/schemas/item/item.schema';
-import { UserSchema } from 'model/schemas/user/user.schema';
 
+import { ItemSchema } from '../model/schemas/item/item.schema';
 import { ListSchema } from '../model/schemas/list/list.schema';
 import { ListsController } from './lists.controller';
 import { ListsService } from './lists.service';
