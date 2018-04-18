@@ -1,13 +1,11 @@
 import { Component, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Item } from 'model/schemas/item/item';
-import { ItemSchema } from 'model/schemas/item/item.schema';
-import { UserSchema } from 'model/schemas/user/user.schema';
 import { Model } from 'mongoose';
 
+import { Item } from '../model/schemas/item/item';
+import { ItemSchema } from '../model/schemas/item/item.schema';
 import { List } from '../model/schemas/list/list';
 import { ListSchema } from '../model/schemas/list/list.schema';
-import { User } from '../model/schemas/user/user';
 import { ListDto } from './list.dto';
 
 @Component()
