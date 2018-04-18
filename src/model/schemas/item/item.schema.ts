@@ -2,7 +2,7 @@ import { BaseSchema } from '../base.schema';
 import { Schema } from 'mongoose';
 
 export const ItemSchema = new BaseSchema({
-  listId: Schema.Types.ObjectId,
+  list: { type: Schema.Types.ObjectId, ref: 'List' },
   title: String,
   description: String,
   completed: Boolean,

@@ -1,5 +1,7 @@
-import { Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
+
+import { UserDto } from './user.dto';
 import { UsersService } from './users.service';
 
 @ApiUseTags('users')
@@ -7,15 +9,15 @@ import { UsersService } from './users.service';
 export class UsersController {
 
   constructor(
-    private readonly usersService: UsersService
+    private readonly usersService: UsersService,
   ) {}
 
   @Post()
   @ApiOperation({ title: 'Create user' })
   @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
   @ApiResponse({ status: 400, description: 'Invalid request.'})
-  async create() {
-    // TODO: Create CreateUserDTO
+  async create(@Body() user: UserDto) {
+    return this.usersService.create(user);
   }
 
   @Get(':id')
@@ -26,12 +28,12 @@ export class UsersController {
     return this.usersService.get(id);
   }
 
-  @Put()
+  @Put(':id')
   @ApiOperation({ title: 'Update user' })
   @ApiResponse({ status: 200, description: 'The record has been successfully updated.'})
   @ApiResponse({ status: 404, description: 'The record was not found.'})
-  async update() {
-    // TODO: Create UpdateUserDTO
+  async update(@Param('id') id: string, @Body() user: UserDto) {
+    return this.usersService.update(id, user);
   }
 
   @Delete(':id')
