@@ -11,7 +11,7 @@ services:
   nest:
     build: ./
     ports:
-      -   "3000:3000"
+      - "3000:3000"
     networks:
       - "creilla"
     container_name: "nest"

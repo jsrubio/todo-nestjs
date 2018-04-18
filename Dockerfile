@@ -1,4 +1,4 @@
-FROM node:6.1
+FROM node:9.6.1
 
 RUN npm i -g yarn
 
