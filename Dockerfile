@@ -12,6 +12,6 @@ RUN yarn
 
 COPY . /app
 
-RUN cp config.json.example config.json
+RUN cp config.json.docker config.json
 
 RUN yarn run start
