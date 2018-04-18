@@ -1,0 +1,20 @@
+version: "2.1"
+
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - "creilla"
+    container_name: "mongodb"
+  nest:
+    build: ./
+    ports:
+      -   "3000:3000"
+    networks:
+      - "creilla"
+    container_name: "nest"
+networks:
+  creilla:
+    driver: bridge
