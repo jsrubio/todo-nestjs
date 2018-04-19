@@ -1,12 +1,15 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as cors from 'cors';
+import * as express from 'express';
 
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.use(cors());
+  const server = express();
+  server.use(cors());
+  
+  const app = await NestFactory.create(AppModule, server);
 
   const options = new DocumentBuilder()
     .setTitle('TO DO List')
